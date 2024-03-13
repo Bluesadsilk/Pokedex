@@ -1,33 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import Pokemon from './PokemonDiv';
-
+import PokemonDiv from './PokemonDiv';
+import NavBar from './NavBar';
 function Pokedex() {
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [pokemon, setPokemon] = useState("ditto");
-  useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
-      .then(res => res.json())
-      .then(data => {
-        setPokemon(data)
-        setLoading(false)
-        setError(false)
-      })
-      .catch(err => {
-        setLoading(false)
-        setError(true)
-      })
-  }, [])
 
+  const [limit, setlimit] = useState(12);
+
+  function handleClickLimit(){setlimit(limit+12)}
+  
   
   return (
     <>
-    <h3>Informacion del pokemon:</h3>
-    <Pokemon
-    pokemon={pokemon}
-    loading={loading}
-    error={error}
-    />
+    <div>
+      <div></div>
+    <div className='grid grid-cols-3 justify-center'>
+      <NavBar/>
+      <h1>Pokedex</h1>
+      <input type="text" />
+      </div>
+    
+    <div className='grid grid-cols-3 gap-5 px-2 py-2 mb-2'>
+    {[...Array(limit)].map((_, i) => (
+      <PokemonDiv key={i} pokemonName={i+1000} />
+    ))}
+    </div>
+    {limit + 12 <= 1025 && (
+  <button className='border-4 border-black p-2' onClick={handleClickLimit}>
+    Cargar más
+  </button>
+)}
+
+    </div>
     </>
   )
 }
