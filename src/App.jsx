@@ -9,10 +9,9 @@ function App() {
   
   return (
     <> 
-   <PokemonModal
-  pokemonSelected={ditto}
-   />
-  
+    <PokemonModal
+    pokemonSelected={"ditto"}
+    />
     </>
   )
 }
