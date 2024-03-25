@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css'
-import PokemonModal from './components/PokemonModal';
+import LandingPage from './components/LandingPage';
 
 
 function App() {
@@ -8,11 +8,7 @@ function App() {
    
   
   return (
-    <> 
-    <PokemonModal
-    pokemonSelected={"ditto"}
-    />
-    </>
+<LandingPage></LandingPage>
   )
 }
 
