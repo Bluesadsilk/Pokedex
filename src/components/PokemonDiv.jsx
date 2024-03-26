@@ -36,7 +36,7 @@ function PokemonDiv({pokemonName}) {
       <div>
         
 
-<button onClick={handleClick} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<button onClick={handleClick} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 justify-center items-center">
     {isClicked && <PokemonModal pokemonSelected={pokemonName}/>}
     <div className="flex flex-col items-center pb-10">
         <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src={pokemon.sprites.front_default} alt="pokemon-sprite"/>

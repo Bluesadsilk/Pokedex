@@ -26,9 +26,9 @@ function PokemonModal({pokemonSelected}){
       );
     }
   
-      return (<div className="absolute w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-white-800 dark:border-gray-700 ">
+      return (<div className="justify-center absolute bg-white border border-gray-700 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-100 items-center">
         <div className="flex flex-col items-center pb-10">
-        <img className="w-4 h-24 mb-3 rounded-full shadow-lg" src={pokemon.sprites.front_default} alt="pokemon-sprite"/>
+        <img className="mb-3 rounded-full shadow-lg" src={pokemon.sprites.front_default} alt="pokemon-sprite"/>
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{pokemon.name}</h5>
         <span className="text-sm text-gray-500 dark:text-gray-400"><h3>#{pokemon.id}</h3></span>
         <div className="flex mt-4 md:mt-6 gap-4">
