@@ -4,35 +4,39 @@ import PokemonDiv from './PokemonDiv';
 function SearchContent({ userInput }) {
   const [searchResults, setSearchResults] = useState([]);
   const [limit, setLimit] = useState(9);
+  const [allPokemon, setAllPokemon] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://pokeapi.co/api/v2/pokemon?limit=1000`)
+      .then(response => response.json())
+      .then(data => {
+        setAllPokemon(data.results);
+      })
+      .catch(error => console.error('Error fetching Pokemon data:', error));
+  }, []);
+
+  useEffect(() => {
+    // Reiniciar los resultados de búsqueda cuando cambia la entrada del usuario
+    setSearchResults([]);
+  }, [userInput]);
 
   useEffect(() => {
     if (userInput.trim() === '') {
-      fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`)
-        .then(response => response.json())
-        .then(data => {
-          setSearchResults(data.results);
-        })
-        .catch(error => console.error('Error fetching Pokemon data:', error));
+      setSearchResults([]);
     } else {
-      fetch(`https://pokeapi.co/api/v2/pokemon/${userInput.toLowerCase()}`)
-        .then(response => response.json())
-        .then(data => {
-          if (!data.detail) {
-            setSearchResults([data]);
-          } else {
-            setSearchResults([]);
-          }
-        })
-        .catch(error => console.error('Error fetching Pokemon details:', error));
+      const filteredPokemon = allPokemon.filter(pokemon =>
+        pokemon.name.includes(userInput.toLowerCase())
+      );
+      setSearchResults(filteredPokemon);
     }
-  }, [userInput, limit]);
+  }, [userInput, allPokemon]);
 
-  const canLoadMore = searchResults.length < limit; // Determina si quedan más Pokémon para cargar
+  const canLoadMore = searchResults.length < limit;
 
   return (
     <>
       <div className='grid grid-cols-3 gap-5 px-2 py-2 mb-2'>
-        {searchResults.map((pokemon, index) => (
+        {searchResults.slice(0, limit).map((pokemon, index) => (
           <div key={index}>
             <PokemonDiv pokemonName={pokemon.name} />
           </div>
