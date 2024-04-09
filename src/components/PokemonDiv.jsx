@@ -13,8 +13,13 @@ function PokemonDiv({pokemonName}) {
       });
   }, []);
 
-  function handleClick() {
-    setClick(true);
+  function showModal() {
+    if (isClicked) {
+      setClick(false)
+    }
+    else{
+      setClick(true)
+    }
   }
 
   if (isLoading) {
@@ -36,8 +41,8 @@ function PokemonDiv({pokemonName}) {
       <div>
         
 
-<button onClick={handleClick} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 justify-center items-center">
-    {isClicked && <PokemonModal pokemonSelected={pokemonName}/>}
+<button onClick={showModal} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 justify-center items-center">
+{isClicked && <PokemonModal pokemonSelected={pokemonName} showModal={showModal}/>}
     <div className="flex flex-col items-center pb-10">
         <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src={pokemon.sprites.front_default} alt="pokemon-sprite"/>
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{pokemon.name}</h5>
@@ -49,6 +54,7 @@ function PokemonDiv({pokemonName}) {
            
         </div>
     </div>
+    
 </button>
 
 

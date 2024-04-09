@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-function PokemonModal({pokemonSelected}){
+function PokemonModal({pokemonSelected, showModal}){
     const [isLoading, setIsLoading] = useState(true);
     const [pokemon, setPokemon] = useState(null);
     useEffect(() => {
@@ -27,14 +27,21 @@ function PokemonModal({pokemonSelected}){
     }
   
       return (<div className="justify-center absolute bg-white border border-gray-700 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-100 items-center">
+
         <div className="flex flex-col items-center pb-10">
+
         <img className="mb-3 rounded-full shadow-lg" src={pokemon.sprites.front_default} alt="pokemon-sprite"/>
+
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{pokemon.name}</h5>
+
         <span className="text-sm text-gray-500 dark:text-gray-400"><h3>#{pokemon.id}</h3></span>
+
+
         <div className="flex mt-4 md:mt-6 gap-4">
         {pokemon.types.map((subtype, index) => (
       <h4 href="#" className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"key={index}>{subtype.type.name}</h4>
     ))}
+    {pokemon.abilities.map((habilities, index)=> (<h3 key={index}>{habilities.ability.name}</h3>))}
            
         </div>
     </div>
