@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { colorByType, colorByStat, statNames } from '../constants/pokemon.js';
 function PokemonModal({ pokemonSelected, showModal }) {
   const [isLoading, setIsLoading] = useState(true);
   const [pokemon, setPokemon] = useState(null);
@@ -48,22 +48,32 @@ function PokemonModal({ pokemonSelected, showModal }) {
           alt="pokemon-sprite"
         />
         <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-          {pokemon.name}
+          {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
         </h5>
         <span className="text-sm text-gray-500 dark:text-gray-400">
           <h3>#{pokemon.id}</h3>
         </span>
 
+        <div className="text-white">
+          <h2 className="text-white">Weight</h2>
+          <h3 className="text-white">{pokemon.weight}</h3>
+          </div>
+
+          <div className="text-white">
+          <h2 className="text-white">Height</h2>
+          <h3 className="text-white">{pokemon.height}</h3>
+          </div>
+
         <div className="flex mt-4 md:mt-6 gap-4 justify-center">
-          {pokemon.types.map((subtype, index) => (
-            <h4
-              href="#"
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              key={index}
-            >
-              {subtype.type.name}
-            </h4>
-          ))}
+  {pokemon.types.map((subtype, index) => (
+  <h4
+    key={index}
+    className={`inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg ${colorByType[subtype.type.name]}`}
+  > 
+    {subtype.type.name}
+  </h4>
+))}
+
         </div>
 
         <div className="grid grid-cols-3 gap-4 mt-4 md:mt-6 place-items-center">
@@ -77,8 +87,6 @@ function PokemonModal({ pokemonSelected, showModal }) {
                 {ability.ability.name}
               </h3>
             ))}
-          </>
-          <>
             <h3 className="text-white mt-4">Forms</h3>
             {pokemon.forms.map((form, index) => (
               <h3
@@ -90,6 +98,21 @@ function PokemonModal({ pokemonSelected, showModal }) {
             ))}
           </>
         </div>
+
+        <div>
+  <h4 className="font-bold capitalize text-white">Stats</h4>
+  <ul className="flex justify-center gap-3 flex-wrap">
+    {pokemon?.stats.map((stat) => (
+      <li className="p-1 rounded-full" key={stat.name}>
+        <div className={`bg-slate-100 rounded-full w-8 h-8 p-2 aspect-square grid place-content-center ${colorByStat[stat.stat.name]}`}>
+          <span className="text-[10px] font-semibold"> {statNames[stat.stat.name]}</span>
+        </div>
+        <span className={`font-bold text-xs text-white ${colorByStat[stat.name]}`}>{stat.base_stat}</span>
+      </li>
+    ))}
+  </ul>
+</div>
+
       </div>
     </div>
   );
