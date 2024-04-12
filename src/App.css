@@ -1,8 +1,18 @@
+@font-face {
+  font-family: Pokemon;
+  src: url('./public/Pokemon_Solid_Normal/pokemonsolid.ttf');
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: 'Pokemon';
+  color: white;
+  letter-spacing: 2px;
+  text-wrap: pretty;
+  text-shadow: 1px 1px 3px black,
+  1px 1px 3px black;  
 }
 
 body{

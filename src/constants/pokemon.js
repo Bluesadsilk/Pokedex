@@ -22,12 +22,12 @@ const colorByType = {
   };
   
   const colorByStat = {
-    "hp": "bg-red-500 bg-slate-100",
-    "attack": "bg-orange-500 bg-slate-100",
-    "defense": "bg-yellow-500 bg-slate-100",
-    "special-attack": "bg-blue-500 bg-slate-100",
-    "special-defense": "bg-green-500 bg-slate-100",
-    "speed": "bg-pink-500 bg-slate-100",
+    "hp": "bg-red-500",
+    "attack": "bg-orange-500",
+    "defense": "bg-yellow-500 ",
+    "special-attack": "bg-blue-500",
+    "special-defense": "bg-green-500",
+    "speed": "bg-pink-500",
   };
 
   const statNames = {

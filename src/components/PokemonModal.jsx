@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { colorByType, colorByStat, statNames } from '../constants/pokemon.js';
+import '../App.css'
 function PokemonModal({ pokemonSelected, showModal }) {
   const [isLoading, setIsLoading] = useState(true);
   const [pokemon, setPokemon] = useState(null);
@@ -13,7 +14,7 @@ function PokemonModal({ pokemonSelected, showModal }) {
       });
   }, [pokemonSelected]);
 
-  if (isLoading) {
+  if (isLoading &&showModal) {
     return (
       <div>
         <div>
@@ -47,21 +48,23 @@ function PokemonModal({ pokemonSelected, showModal }) {
           src={pokemon.sprites.front_default}
           alt="pokemon-sprite"
         />
-        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+        <div>  
+          <h5 className="mb-3 text-5xl font-medium text-gray-900 dark:text-white">
           {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
-        </h5>
-        <span className="text-sm text-gray-500 dark:text-gray-400">
+        </h5></div>
+      
+        <div className="text-3xl mb-3 text-gray-500 dark:text-gray-400">
           <h3>#{pokemon.id}</h3>
-        </span>
+        </div>
 
-        <div className="text-white">
-          <h2 className="text-white">Weight</h2>
-          <h3 className="text-white">{pokemon.weight}</h3>
+        <div className="text-white mb-2">
+          <h2 className="text-2xl mb-1">Weight</h2>
+          <h3 className="text-2xl">{pokemon.weight}</h3>
           </div>
 
-          <div className="text-white">
-          <h2 className="text-white">Height</h2>
-          <h3 className="text-white">{pokemon.height}</h3>
+          <div className="text-white mb-2">
+          <h2 className="text-2xl mb-1">Height</h2>
+          <h3 className="text-2xl">{pokemon.height}</h3>
           </div>
 
         <div className="flex mt-4 md:mt-6 gap-4 justify-center">
@@ -79,27 +82,27 @@ function PokemonModal({ pokemonSelected, showModal }) {
         <div className="grid grid-cols-3 gap-4 mt-4 md:mt-6 place-items-center">
           <>
             <h3 className="text-white mt-4">Habilites</h3>
-            {pokemon.abilities.map((ability, index) => (
+            {pokemon.abilities.map((ability, indexAb) => (
               <h3
                 className="items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                key={index}
+                key={indexAb}
               >
                 {ability.ability.name}
               </h3>
             ))}
            
-          </>
+          </> 
         </div>
 
         <div>
   <h4 className="font-bold capitalize text-white">Stats</h4>
   <ul className="flex justify-center gap-3 flex-wrap">
-    {pokemon?.stats.map((stat) => (
-      <li className="p-1 rounded-full" key={stat.name}>
-        <div className={`bg-slate-100 rounded-full w-8 h-8 p-2 aspect-square grid place-content-center ${colorByStat[stat.stat.name]}`}>
+    {pokemon?.stats.map((stat, indexStat) => (
+      <li className="p-1 rounded-full" key={indexStat}>
+        <div className={`rounded-full w-8 h-8 p-2 aspect-square grid place-content-center ${colorByStat[stat.stat.name]}`}>
           <span className="text-[10px] font-semibold"> {statNames[stat.stat.name]}</span>
         </div>
-        <span className={`font-bold text-xs text-white ${colorByStat[stat.name]}`}>{stat.base_stat}</span>
+        <span className={`font-bold text-xs text-white `}>{stat.base_stat}</span>
       </li>
     ))}
   </ul>

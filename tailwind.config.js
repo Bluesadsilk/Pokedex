@@ -4,7 +4,21 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+
+
+      fontFamily: {
+        custom: ['Pokemon'],},
+      fontFace:{
+        'Pokemon':{
+          'fontFamily': 'Pokemon',
+          'fontStyle':'normal',
+          'fontWeight':'400',
+          'src':['url(src/public/Pokemon_Solid_Normal/pokemonsolid.ttf)'],
+        }
+      }
+
+    },
   },
   plugins: [],
 }
