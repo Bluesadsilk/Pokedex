@@ -9,9 +9,14 @@ function PokemonModal({ pokemonSelected, clearModal }) {
   const [isLoading, setIsLoading] = useState(true);
   const [pokemon, setPokemon] = useState(null);
 
-  function playAudio() {
-    var audio = new Audio(pokemon.cries.latest);
-    audio.play();
+  function playAudioLatest() {
+    var audioLatest = new Audio(pokemon.cries.latest);
+    audioLatest.play();
+  }
+
+  function playAudioLegacy() {
+    var audioLegacy = new Audio(pokemon.cries.legacy);
+    audioLegacy.play();
   }
 
   function handleModal() {
@@ -88,19 +93,19 @@ function PokemonModal({ pokemonSelected, clearModal }) {
         </div>
 
         <div>
-          <h4 className="font-bold capitalize text-white">Stats</h4>
+          <h4 className="font-bold capitalize text-white mb-2">Stats</h4>
           <ul className="flex justify-center gap-3 flex-wrap px-3">
             {pokemon?.stats.map((stat, indexStat) => (
               <li className="p-1 rounded-full" key={indexStat}>
                 <div
-                  className={`rounded-full w-8 h-8 p-2 aspect-square grid place-content-center ${colorByStat[stat.stat.name]}`}
+                  className={`rounded-full w-8 h-8 py-6 px-6 mb-2 aspect-square grid place-content-center ${colorByStat[stat.stat.name]}`}
                 >
-                  <span className="text-[10px] font-semibold">
+                  <span className="text-m font-semibol">
                     {" "}
                     {statNames[stat.stat.name]}
                   </span>
                 </div>
-                <span className={`font-bold text-xs text-white`}>
+                <span className={`font-bold text-xm text-white`}>
                   {stat.base_stat}
                 </span>
               </li>
@@ -111,11 +116,14 @@ function PokemonModal({ pokemonSelected, clearModal }) {
 
       <div>
         <img src={pokemon.sprites.front_shiny} alt="" />
-        <button onClick={playAudio}>
+        <button className="px-1" onClick={playAudioLatest}>
+        <HeadphonesLogo/>
+        </button>
+        <button className="px-1" onClick={playAudioLegacy}>
         <HeadphonesLogo/>
         </button>
 
-        <button onClick={handleModal}>
+        <button className="px-1" onClick={handleModal}>
         <ExitLogo/>
         </button>
       </div>
