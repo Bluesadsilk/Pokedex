@@ -7,6 +7,12 @@ function LandingPage() {
   
   const [navSearchIsEmpty, setNavSearch] = useState(true);
   const [navBarContent, setNavContent] = useState(null);
+  const [isBerrieSelected, setBerrieSelected] = useState(false)
+  const [isItemSelected, setItemSelected] = useState(false)
+  const [isHomeselected, setHomeSelected] = useState(true)
+  
+
+  
   
   return (
     <>
