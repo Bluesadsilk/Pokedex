@@ -4,20 +4,15 @@ import '../App.css';
 import HeadphonesLogo from '../assets/HeadphonesLogo.jsx'
 import ExitLogo from '../assets/ExitLogo.jsx'
 import LoadingAnimation from '../assets/LoadingAnimation.jsx'
+import PokemonTypes from './PokemonTypes.jsx'
+import PokemonAbilities from './PokemonAbilities.jsx'
+import PokemonStats from './PokemonStats.jsx'
+import PokemonCries from './PokemonCries.jsx'
+import PokemonSprites from './PokemonSprites.jsx'
 
 function PokemonModal({ pokemonSelected, clearModal }) {
   const [isLoading, setIsLoading] = useState(true);
   const [pokemon, setPokemon] = useState(null);
-
-  function playAudioLatest() {
-    var audioLatest = new Audio(pokemon.cries.latest);
-    audioLatest.play();
-  }
-
-  function playAudioLegacy() {
-    var audioLegacy = new Audio(pokemon.cries.legacy);
-    audioLegacy.play();
-  }
 
   function handleModal() {
     clearModal(false);
@@ -48,6 +43,7 @@ function PokemonModal({ pokemonSelected, clearModal }) {
             {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
           </h5>
         <h3>#{pokemon.id}</h3>
+        <PokemonTypes pokemonObj={pokemon}/>
       </div>
      
       <img
@@ -83,62 +79,17 @@ function PokemonModal({ pokemonSelected, clearModal }) {
           </h3>
         </div>
 
-        <div className="flex mt-4 md:mt-6 gap-4 justify-center">
-          {pokemon.types.map((subtype, index) => (
-            <h4
-              key={index}
-              className={`inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg ${colorByType[subtype.type.name]}`}
-            >
-              {subtype.type.name}
-            </h4>
-          ))}
-        </div>
-        <h3 className="text-white mt-4">Habilites</h3>
-        <div className="flex flex-col">
-          {pokemon.abilities.map((ability, indexAb) => (
-            <h3
-              className="bg-blue-400 py-2 px-2 mb-3 rounded-lg"
-              key={indexAb}
-            >
-              {ability.ability.name.charAt(0).toUpperCase() +
-                ability.ability.name.slice(1)}
-            </h3>
-          ))}
-        </div>
-
-        <div>
-          <h4 className="font-bold capitalize text-white mb-2">Stats</h4>
-          <ul className="flex justify-center gap-3 flex-wrap px-3">
-            {pokemon?.stats.map((stat, indexStat) => (
-              <li className="p-1 rounded-full" key={indexStat}>
-                <div
-                  className={`rounded-full w-8 h-8 py-6 px-6 mb-2 aspect-square grid place-content-center ${colorByStat[stat.stat.name]}`}
-                >
-                  <span className="text-m font-semibol">
-                    {" "}
-                    {statNames[stat.stat.name]}
-                  </span>
-                </div>
-                <span className={`font-bold text-xm text-white`}>
-                  {stat.base_stat}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      <div>
-        <img src={pokemon.sprites.front_shiny} alt="" />
-        <button className="px-1" onClick={playAudioLatest}>
-        <HeadphonesLogo/>
-        </button>
-        <button className="px-1" onClick={playAudioLegacy}>
-        <HeadphonesLogo/>
-        </button>
-
+        <PokemonAbilities pokemonObj={pokemon}/>
+       
+    
         
       </div>
+       
+        <PokemonStats pokemonObj={pokemon}/>
+
+        <PokemonCries pokemonObj={pokemon}/>
+        
+        <PokemonSprites pokemonObj={pokemon}/>
     </div>
   );
 }
