@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import ItemBerrieDiv from './ItemBerrieDiv';
+import Berry from './Berry'
 function BerrieRender(){
     const [limit, setlimit] = useState(9);
 
@@ -7,7 +7,7 @@ function BerrieRender(){
     return(<>
      <div className='grid grid-cols-3 gap-5 px-2 py-2 mb-2'>
     {[...Array(limit)].map((_, i) => (
-      <ItemBerrieDiv key={i} pokemonName={i+1} />
+      <Berry key={i} berryName={i+1} />
     ))}
     </div>  
     {limit + 9 <= 1025 && (
