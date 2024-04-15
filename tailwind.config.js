@@ -14,7 +14,7 @@ export default {
           'fontFamily': 'Pokemon',
           'fontStyle':'normal',
           'fontWeight':'400',
-          'src':['url(src/public/Pokemon_Solid_Normal/pokemonsolid.ttf)'],
+          'src':['/Pokemon_Solid_Normal/pokemonsolid.ttf)'],
         }
       }
 

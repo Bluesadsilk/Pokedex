@@ -39,20 +39,34 @@ function PokemonModal({ pokemonSelected, clearModal }) {
   }
 
   return (
+
+
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/5 bg-white border border-gray-700 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <div className="flex flex-col items-center pb-10">
-        <img
+      <div className="flex">
+        <div className="flex flex-col"> 
+          <h5 className="mb-3 text-5xl font-medium text-gray-900 dark:text-white">
+            {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+          </h5>
+        <h3>#{pokemon.id}</h3>
+      </div>
+     
+      <img
           className="mb-3 rounded-full shadow-lg"
           src={pokemon.sprites.front_default}
           alt="pokemon-sprite"
         />
+        <button className="px-1" onClick={handleModal}>
+        <ExitLogo/>
+        </button>
+        </div>
+
+      <div className="flex flex-col items-center pb-10">
+      
         <div>
-          <h5 className="mb-3 text-5xl font-medium text-gray-900 dark:text-white">
-            {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
-          </h5>
+         
         </div>
         <div className="text-3xl mb-3 text-gray-500 dark:text-gray-400">
-          <h3>#{pokemon.id}</h3>
+          
         </div>
 
         <div className="text-white mb-2">
@@ -123,9 +137,7 @@ function PokemonModal({ pokemonSelected, clearModal }) {
         <HeadphonesLogo/>
         </button>
 
-        <button className="px-1" onClick={handleModal}>
-        <ExitLogo/>
-        </button>
+        
       </div>
     </div>
   );
