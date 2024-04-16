@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { colorByType, colorByStat, statNames } from '../constants/pokemon.js';
 import '../App.css';
-import HeadphonesLogo from '../assets/HeadphonesLogo.jsx'
 import ExitLogo from '../assets/ExitLogo.jsx'
+import PokemonAtr from './PokemonAtr.jsx';
 import LoadingAnimation from '../assets/LoadingAnimation.jsx'
 import PokemonTypes from './PokemonTypes.jsx'
 import PokemonAbilities from './PokemonAbilities.jsx'
@@ -37,59 +36,47 @@ function PokemonModal({ pokemonSelected, clearModal }) {
 
 
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/5 bg-white border border-gray-700 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <div className="flex">
-        <div className="flex flex-col"> 
-          <h5 className="mb-3 text-5xl font-medium text-gray-900 dark:text-white">
-            {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
-          </h5>
-        <h3>#{pokemon.id}</h3>
-        <PokemonTypes pokemonObj={pokemon}/>
-      </div>
-     
-      <img
-          className="mb-3 rounded-full shadow-lg"
+      <div className="flex flex-row justify-between items-center m-auto">
+        <PokemonAtr pokemonObj={pokemon}/>     
+        <div className="justify-center max-w-lg object-cover ">  <img
+          className="rounded-full shadow-lg"
           src={pokemon.sprites.front_default}
           alt="pokemon-sprite"
-        />
+        /></div>
+    
         <button className="px-1" onClick={handleModal}>
         <ExitLogo/>
         </button>
         </div>
-
-      <div className="flex flex-col items-center pb-10">
-      
-        <div>
-         
-        </div>
-        <div className="text-3xl mb-3 text-gray-500 dark:text-gray-400">
-          
-        </div>
-
-        <div className="text-white mb-2">
-          <h2 className="text-2xl mb-1 text-white">Weight</h2>
-          <h3 className="text-2xl text-gray-400">
-            {pokemon.weight} <span className="text-xl">LBS</span>{" "}
-          </h3>
-        </div>
-
-        <div className="text-white mb-2">
-          <h2 className="text-2xl mb-1 text-white">Height</h2>
-          <h3 className="text-2xl text-gray-400">
-            {pokemon.height} <span className="text-xl">FT</span>
-          </h3>
-        </div>
-
-        <PokemonAbilities pokemonObj={pokemon}/>
-       
-    
         
-      </div>
-       
+
+        <div className="flex flex-row justify-center gap-10">  
+          <div className="flex flex-row justify-center items-center mb-5 gap-5">
+            <div className="text-white mb-2">
+               <h2 className="text-2xl mb-1 text-white">Weight</h2>
+                <h3 className="text-2xl text-gray-400">
+                   {pokemon.weight} <span className="text-xl">LBS</span>{" "}
+                </h3>
+             </div>
+
+            <div className="text-white mb-2">
+              <h2 className="text-2xl mb-1 text-white">Height</h2>
+               <h3 className="text-2xl text-gray-400">
+            {pokemon.height} <span className="text-xl">FT</span>
+              </h3>
+             </div>
+          </div>
+          <PokemonTypes pokemonObj={pokemon}/>
+        <PokemonAbilities pokemonObj={pokemon}/>
+        </div>
+        <PokemonSprites pokemonObj={pokemon}/>
+        <PokemonCries pokemonObj={pokemon}/>
         <PokemonStats pokemonObj={pokemon}/>
 
-        <PokemonCries pokemonObj={pokemon}/>
         
-        <PokemonSprites pokemonObj={pokemon}/>
+        
+        
+
     </div>
   );
 }

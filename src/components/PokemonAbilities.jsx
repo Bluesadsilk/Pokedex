@@ -2,11 +2,11 @@ function PokemonAbilities({pokemonObj}){
 
     return( 
         <div>
-             <h3 className="text-white mt-4">Habilites</h3>
+             <h3 className="text-white mt-4 mb-2">Habilites</h3>
         <div className="flex flex-col">
           {pokemonObj.abilities.map((ability, indexAb) => (
             <h3
-              className="bg-blue-400 py-2 px-2 mb-3 rounded-lg"
+              className="bg-blue-400 py-2 px-2 mb-3 rounded-lg m-auto"
               key={indexAb}
             >
               {ability.ability.name.charAt(0).toUpperCase() +

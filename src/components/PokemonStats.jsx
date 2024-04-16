@@ -2,7 +2,7 @@ import { colorByStat, statNames } from '../constants/pokemon.js';
 function PokemonStats({pokemonObj}){
 
     return( 
-        <div>
+        <div className='mb-6'>
           
           
           <h4 className="font-bold capitalize text-white mb-2">Stats</h4>
