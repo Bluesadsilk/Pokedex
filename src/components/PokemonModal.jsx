@@ -36,22 +36,16 @@ function PokemonModal({ pokemonSelected, clearModal }) {
 
 
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/5 bg-white border border-gray-700 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <div className="flex flex-row justify-between items-center m-auto">
-        <PokemonAtr pokemonObj={pokemon}/>     
-        <div className="justify-center max-w-lg object-cover ">  <img
-          className="rounded-full shadow-lg"
-          src={pokemon.sprites.front_default}
-          alt="pokemon-sprite"
-        /></div>
-    
-        <button className="px-1" onClick={handleModal}>
+      <div className="flex flex-row justify-center">
+        <PokemonAtr pokemonObj={pokemon}/>         
+        <button className="align-right" onClick={handleModal}>
         <ExitLogo/>
         </button>
         </div>
         
 
         <div className="flex flex-row justify-center gap-10">  
-          <div className="flex flex-row justify-center items-center mb-5 gap-5">
+          <div className="flex flex-col justify-center items-center mb-5 gap-10">
             <div className="text-white mb-2">
                <h2 className="text-2xl mb-1 text-white">Weight</h2>
                 <h3 className="text-2xl text-gray-400">
