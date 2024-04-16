@@ -35,26 +35,31 @@ function PokemonModal({ pokemonSelected, clearModal }) {
   return (
 
 
-    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/5 bg-white border border-gray-700 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <div className="flex flex-row justify-center">
-        <PokemonAtr pokemonObj={pokemon}/>         
-        <button className="align-right" onClick={handleModal}>
-        <ExitLogo/>
+    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/5 bg-white border border-gray-700 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 justify-center">
+    <div className="flex items-center justify-between">
+      <div className="flex-1 text-center">
+        <PokemonAtr pokemonObj={pokemon}/>
+      </div>
+      <div className="ml-4 items-center">
+        <button onClick={handleModal}>
+          <ExitLogo/>
         </button>
-        </div>
-        
-
-        <div className="flex flex-row justify-center gap-10">  
-          <div className="flex flex-col justify-center items-center mb-5 gap-10">
-            <div className="text-white mb-2">
-               <h2 className="text-2xl mb-1 text-white">Weight</h2>
+      </div>
+    </div>
+        <PokemonSprites pokemonObj={pokemon}/>
+        <div className="flex flex-row justify-center items-center gap-x-10 mt-5">  
+          <div className="flex flex-row justify-center items-center mb-5 gap-10">
+            
+            <div>
+               <h2 className="text-white mt-4 mb-6 text-2xl items-center" >Weight</h2>
                 <h3 className="text-2xl text-gray-400">
                    {pokemon.weight} <span className="text-xl">LBS</span>{" "}
                 </h3>
              </div>
+             
 
-            <div className="text-white mb-2">
-              <h2 className="text-2xl mb-1 text-white">Height</h2>
+            <div>
+              <h2 className="text-white mt-4 mb-6 text-2xl items-center">Height</h2>
                <h3 className="text-2xl text-gray-400">
             {pokemon.height} <span className="text-xl">FT</span>
               </h3>
@@ -63,9 +68,9 @@ function PokemonModal({ pokemonSelected, clearModal }) {
           <PokemonTypes pokemonObj={pokemon}/>
         <PokemonAbilities pokemonObj={pokemon}/>
         </div>
-        <PokemonSprites pokemonObj={pokemon}/>
-        <PokemonCries pokemonObj={pokemon}/>
         <PokemonStats pokemonObj={pokemon}/>
+        <PokemonCries pokemonObj={pokemon}/>  
+       
 
         
         

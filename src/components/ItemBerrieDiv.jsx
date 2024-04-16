@@ -42,10 +42,10 @@ function ItemBerrieDiv({itemName}) {
       <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 justify-center items-center">
       <div className="flex flex-col items-center pb-10"> 
       <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src={item.sprites.default} alt={item.name}/>
-      <h3 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{item.name}</h3> 
+      <h3 className="mb-3 text-xl font-medium text-gray-900 dark:text-white">{item.name}</h3> 
       <h3 className="text-sm text-gray-500 dark:text-gray-400">#{item.id} 
       </h3>
-      <h3 className='inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-300'>{item.category.name}</h3>
+      <h3 className='inline-flex items-center px-4 py-2 mt-3 text-sm font-medium text-center text-white rounded-lg bg-blue-300'>{item.category.name}</h3>
       </div>
       </div>
         

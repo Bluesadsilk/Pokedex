@@ -1,9 +1,9 @@
 function ExitLogo(){
 return(  <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="icon icon-tabler icon-tabler-outbound hover:bg-gray-900 rounded-lg px-2"
-    width="44"
-    height="44"
+    className="icon icon-tabler icon-tabler-outbound hover:bg-gray-900 rounded-lg p-2"
+    width="80"
+    height="80"
     viewBox="0 0 24 24"
     strokeWidth="1.5"
     stroke={"white"}

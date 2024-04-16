@@ -1,23 +1,24 @@
 function PokemonSprites({pokemonObj}){
 
     return( 
-        <div>
-            <h3>Sprites</h3>
+        <div className="justify-center">
+            <h3 className="text-3xl justify-center mb-5">Sprites</h3>
         <div className="flex flex-row justify-center items-center">
             
-            <div>
-                <h3>Back</h3>
-                <img className=" rounded-lg" src={pokemonObj.sprites.back_default} alt={pokemonObj.name + "Image"} />
+            <div className="justify-center items-center m-5">
+                <h3 className="text-2xl">Back</h3>
+                <img className="justify-center rounded-lg" src={pokemonObj.sprites.back_default} alt={pokemonObj.name + "Image"} />
                 </div>
-            <div/>
-            <div>
-                <h3>Front</h3>
+            
+            <div className="justify-center items-center  m-5">
+                <h3 className="text-2xl">Front</h3>
                 <img className=" rounded-lg" src={pokemonObj.sprites.front_default} alt={pokemonObj.name + "Image"} />
                 </div>
-            <div>
-                <h3>Shiny</h3>
+            <div className="justify-center items-center  m-5">
+                <h3 className="text-2xl">Shiny</h3>
                 <img className=" rounded-lg" src={pokemonObj.sprites.front_shiny} alt={pokemonObj.name + "Image"} />
                 </div>
+                <div/>
             
           </div>
           </div>
